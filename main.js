@@ -73,7 +73,8 @@ function generateCode() {
     );
     // generate the code for the static website
     //add style code to the website in a multiline string
-    code += `<style>
+    code += `
+    <style>
         #crypto-donations {
             display: flex;
             flex-direction: column;
@@ -121,23 +122,58 @@ function generateCode() {
             border-radius: 10px;
         }
         .copy-btn {
-            background-color: #4CAF50;
+            background-color: #1DA1F2;
             border: none;
             color: white;
             padding: 8px 20px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
+            font-size: 2.5rem;
+            margin: 10px 2px;
             cursor: pointer;
             border-radius: 30px;
+            font-weight: bold;
         }
         .crypto-donation-top {
             margin-bottom: 30px;
         }
         .thicc-text {
             font-weight: bold;
+            font-size: 3rem;
+        }
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 80px;
+            background-color: #f0f0f0;
+            border-radius: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,.3);
+            margin: 0 auto;
+            /* center text horizontally and vertically */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .footer a {
+            /* text-decoration: none; */
+            color: #000;
+        }
+        h3 {
+            font-size: 5rem;
+        }
+        canvas {
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+        p {
+            font-size: 2rem;
         }
         </style>`;
     code += `
@@ -154,16 +190,16 @@ function generateCode() {
             code += `
     <div class='crypto-donation'>
         <div class='crypto-donation-header'>
-        <img src='${coinUrls[ticker]}'>
+        <img src='${coinUrls[ticker]}' style="width: 10vw; height: auto;">
             <h3>${ticker}</h3>
         </div>
         <div class='crypto-donation-body'>
             <div class="crypto-donation-top">
-                <p class="thicc-text">Send your ${ticker} to the following address:</p>
+                <p class="thicc-text">Send ${ticker} to the following address:</p>
                 <div class='${ticker}-code code-box'>
                     <p class="wallet-address">${walletAddress}</p>
                 </div>
-                <button class="copy-btn" onclick="${ticker}copyCode()">Copy Address</button>
+                <button class="copy-btn" onclick="${ticker}copyCode()">Copy</button>
             </div>
             <div class='crypto-donation-bottom'>
                 <p class="thicc-text">Or scan the following QR code:</p>    
@@ -172,27 +208,32 @@ function generateCode() {
         </div>
     </div>
 `;
-            // add some javascript for the qr code
+            // add javascript for the qr code
             code += `
-<script type="text/javascript">
-    new QRious({
-        element: document.getElementById("${ticker}-qr"), 
-        value: "${walletAddress}",
-        size: 256
-    });
-    function ${ticker}copyCode() {
-        var copyText = document.querySelector(".${ticker}-code");
-        var range = document.createRange();
-        range.selectNode(copyText);
-        window.getSelection().removeAllRanges();
-        window.getSelection().addRange(range);
-        document.execCommand("copy");
-    }
-</script>
+    <script type="text/javascript">
+        new QRious({
+            element: document.getElementById("${ticker}-qr"), 
+            value: "${walletAddress}",
+            size: 400
+        });
+        function ${ticker}copyCode() {
+            var copyText = document.querySelector(".${ticker}-code");
+            var range = document.createRange();
+            range.selectNode(copyText);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            document.execCommand("copy");
+        }
+    </script>
 `;
         }
-    }
-    );
+    });
     code += "</div>";
+    // add the footer
+    code += `
+<div class="footer">
+    <p>This site created by <a href="https://dev00ps.com">Someone</a></p>
+</div>
+`;
     return code;
 }
