@@ -1,0 +1,285 @@
+<style>
+    #crypto-donations {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .crypto-donation {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 1rem;
+        padding: 1rem;
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+    .crypto-donation-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .crypto-donation-header img {
+        width: 2rem;
+        height: 2rem;
+        margin-right: 1rem;
+    }
+    .crypto-donation-header h3 {
+        margin: 0;
+    }
+    .crypto-donation-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .crypto-donation-body p {
+        margin: 0.5rem;
+    }
+    .code-box {
+        background-color: #f2f2f2;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .copy-btn {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 8px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 30px;
+    }
+    .crypto-donation-top {
+        margin-bottom: 30px;
+    }
+    .thicc-text {
+        font-weight: bold;
+    }
+    </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+<div id='crypto-donations'>
+<div class='crypto-donation'>
+    <div class='crypto-donation-header'>
+    <img src='https://s2.coinmarketcap.com/static/img/coins/64x64/1.png'>
+        <h3>BTC</h3>
+    </div>
+    <div class='crypto-donation-body'>
+        <div class="crypto-donation-top">
+            <p class="thicc-text">Send your BTC to the following address:</p>
+            <div class='BTC-code code-box'>
+                <p class="wallet-address">myBTCaddress</p>
+            </div>
+            <button class="copy-btn" onclick="BTCcopyCode()">Copy Address</button>
+        </div>
+        <div class='crypto-donation-bottom'>
+            <p class="thicc-text">Or scan the following QR code:</p>    
+            <canvas id="BTC-qr"></canvas>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+new QRious({
+    element: document.getElementById("BTC-qr"), 
+    value: "myBTCaddress",
+    size: 256
+});
+function BTCcopyCode() {
+    var copyText = document.querySelector(".BTC-code");
+    var range = document.createRange();
+    range.selectNode(copyText);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand("copy");
+}
+</script>
+
+<div class='crypto-donation'>
+    <div class='crypto-donation-header'>
+    <img src='https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png'>
+        <h3>ETH</h3>
+    </div>
+    <div class='crypto-donation-body'>
+        <div class="crypto-donation-top">
+            <p class="thicc-text">Send your ETH to the following address:</p>
+            <div class='ETH-code code-box'>
+                <p class="wallet-address">myETHaddress</p>
+            </div>
+            <button class="copy-btn" onclick="ETHcopyCode()">Copy Address</button>
+        </div>
+        <div class='crypto-donation-bottom'>
+            <p class="thicc-text">Or scan the following QR code:</p>    
+            <canvas id="ETH-qr"></canvas>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+new QRious({
+    element: document.getElementById("ETH-qr"), 
+    value: "myETHaddress",
+    size: 256
+});
+function ETHcopyCode() {
+    var copyText = document.querySelector(".ETH-code");
+    var range = document.createRange();
+    range.selectNode(copyText);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand("copy");
+}
+</script>
+
+<div class='crypto-donation'>
+    <div class='crypto-donation-header'>
+    <img src='https://s2.coinmarketcap.com/static/img/coins/64x64/74.png'>
+        <h3>DOGE</h3>
+    </div>
+    <div class='crypto-donation-body'>
+        <div class="crypto-donation-top">
+            <p class="thicc-text">Send your DOGE to the following address:</p>
+            <div class='DOGE-code code-box'>
+                <p class="wallet-address">myDOGEaddress</p>
+            </div>
+            <button class="copy-btn" onclick="DOGEcopyCode()">Copy Address</button>
+        </div>
+        <div class='crypto-donation-bottom'>
+            <p class="thicc-text">Or scan the following QR code:</p>    
+            <canvas id="DOGE-qr"></canvas>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+new QRious({
+    element: document.getElementById("DOGE-qr"), 
+    value: "myDOGEaddress",
+    size: 256
+});
+function DOGEcopyCode() {
+    var copyText = document.querySelector(".DOGE-code");
+    var range = document.createRange();
+    range.selectNode(copyText);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand("copy");
+}
+</script>
+
+<div class='crypto-donation'>
+    <div class='crypto-donation-header'>
+    <img src='https://s2.coinmarketcap.com/static/img/coins/64x64/2.png'>
+        <h3>LTC</h3>
+    </div>
+    <div class='crypto-donation-body'>
+        <div class="crypto-donation-top">
+            <p class="thicc-text">Send your LTC to the following address:</p>
+            <div class='LTC-code code-box'>
+                <p class="wallet-address">myLTCaddress</p>
+            </div>
+            <button class="copy-btn" onclick="LTCcopyCode()">Copy Address</button>
+        </div>
+        <div class='crypto-donation-bottom'>
+            <p class="thicc-text">Or scan the following QR code:</p>    
+            <canvas id="LTC-qr"></canvas>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+new QRious({
+    element: document.getElementById("LTC-qr"), 
+    value: "myLTCaddress",
+    size: 256
+});
+function LTCcopyCode() {
+    var copyText = document.querySelector(".LTC-code");
+    var range = document.createRange();
+    range.selectNode(copyText);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand("copy");
+}
+</script>
+
+<div class='crypto-donation'>
+    <div class='crypto-donation-header'>
+    <img src='https://s2.coinmarketcap.com/static/img/coins/64x64/328.png'>
+        <h3>XMR</h3>
+    </div>
+    <div class='crypto-donation-body'>
+        <div class="crypto-donation-top">
+            <p class="thicc-text">Send your XMR to the following address:</p>
+            <div class='XMR-code code-box'>
+                <p class="wallet-address">myXMRaddress</p>
+            </div>
+            <button class="copy-btn" onclick="XMRcopyCode()">Copy Address</button>
+        </div>
+        <div class='crypto-donation-bottom'>
+            <p class="thicc-text">Or scan the following QR code:</p>    
+            <canvas id="XMR-qr"></canvas>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+new QRious({
+    element: document.getElementById("XMR-qr"), 
+    value: "myXMRaddress",
+    size: 256
+});
+function XMRcopyCode() {
+    var copyText = document.querySelector(".XMR-code");
+    var range = document.createRange();
+    range.selectNode(copyText);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand("copy");
+}
+</script>
+
+<div class='crypto-donation'>
+    <div class='crypto-donation-header'>
+    <img src='https://s2.coinmarketcap.com/static/img/coins/64x64/1831.png'>
+        <h3>BCH</h3>
+    </div>
+    <div class='crypto-donation-body'>
+        <div class="crypto-donation-top">
+            <p class="thicc-text">Send your BCH to the following address:</p>
+            <div class='BCH-code code-box'>
+                <p class="wallet-address">myBCHaddress</p>
+            </div>
+            <button class="copy-btn" onclick="BCHcopyCode()">Copy Address</button>
+        </div>
+        <div class='crypto-donation-bottom'>
+            <p class="thicc-text">Or scan the following QR code:</p>    
+            <canvas id="BCH-qr"></canvas>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+new QRious({
+    element: document.getElementById("BCH-qr"), 
+    value: "myBCHaddress",
+    size: 256
+});
+function BCHcopyCode() {
+    var copyText = document.querySelector(".BCH-code");
+    var range = document.createRange();
+    range.selectNode(copyText);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand("copy");
+}
+</script>
+</div>

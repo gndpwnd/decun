@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DeCun</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<h1>DeCun</h1>
+    <button class="menu_button">
+            <span onclick="window.location='./example.html'">Example Form</span>
+    </button>
+	<form>
+		<h2>Select cryptocurrencies and enter wallet addresses</h2>
+		<div id="crypto-options">
+			<label><input type="checkbox" name="crypto" value="BTC">Bitcoin (BTC)</label>
+			<label><input type="checkbox" name="crypto" value="ETH">Ethereum (ETH)</label>
+            <label><input type="checkbox" name="crypto" value="DOGE">Dogecoin (DOGE)</label>
+			<label><input type="checkbox" name="crypto" value="LTC">Litecoin (LTC)</label>
+            <label><input type="checkbox" name="crypto" value="XMR">Monero (XMR)</label>
+			<label><input type="checkbox" name="crypto" value="BCH">Bitcoin Cash (BCH)</label>
+		</div>
+        <div id="crypto-fields-list">
+            <div class="crypto-field">
+                <label for="BTC">Bitcoin (BTC)</label>
+                <input type="text" name="BTC" placeholder="Enter your Bitcoin address">
+            </div>
+            <div class="crypto-field">
+                <label for="ETH">Ethereum (ETH)</label>
+                <input type="text" name="ETH" placeholder="Enter your Ethereum address">
+            </div>
+            <div class="crypto-field">
+                <label for="DOGE">Dogecoin (DOGE)</label>
+                <input type="text" name="DOGE" placeholder="Enter your Dogecoin address">
+            </div>
+            <div class="crypto-field">
+                <label for="LTC">Litecoin (LTC)</label>
+                <input type="text" name="LTC" placeholder="Enter your Litecoin address">
+            </div>
+            <div class="crypto-field">
+                <label for="XMR">Monero (XMR)</label>
+                <input type="text" name="XMR" placeholder="Enter your Monero address">
+            </div>
+            <div class="crypto-field">
+                <label for="BCH">Bitcoin Cash (BCH)</label>
+                <input type="text" name="BCH" placeholder="Enter your Bitcoin Cash address">
+            </div>
+        </div>
+		<button id="generate-btn">Generate</button>
+	</form>
+	<div id="code-box">
+        <label for="code"><h2>Copy the code below and paste it into your website</h2></label>
+        <textarea id="code"></textarea>
+        <button id="copy-btn">Copy</button>
+    </div>
+	<script type="text/javascript" src="main.js"></script>
+</body>
+</html>
