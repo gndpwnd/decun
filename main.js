@@ -3,6 +3,9 @@ const codeBoxArea = document.getElementById("code");
 const cryptoOptions = document.getElementById("crypto-options");
 const copyBtn = document.getElementById("copy-btn"); 
 
+// get the current year
+const createdYear = new Date().getFullYear();
+
 // Show/hide wallet address fields based on checkbox status if checked
 
 cryptoOptions.addEventListener("change", (e) => {
@@ -48,17 +51,26 @@ copyBtn.addEventListener("click", (e) => {
 // urls for the images for all the coins
 
 const coinUrls = {
+    "ADA" : "https://s2.coinmarketcap.com/static/img/coins/64x64/2010.png",
     "BTC": "https://s2.coinmarketcap.com/static/img/coins/64x64/1.png",
+    "BCH" : "https://s2.coinmarketcap.com/static/img/coins/64x64/1831.png",
+    "BNB" : "https://s2.coinmarketcap.com/static/img/coins/64x64/1839.png",
     "DOGE": "https://s2.coinmarketcap.com/static/img/coins/64x64/74.png",
     "ETH": "https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png",
     "LTC" : "https://s2.coinmarketcap.com/static/img/coins/64x64/2.png",
+    "MATIC" : "https://s2.coinmarketcap.com/static/img/coins/64x64/3890.png",
+    "NEO" : "https://s2.coinmarketcap.com/static/img/coins/64x64/1376.png",
+    "SOL" : "https://s2.coinmarketcap.com/static/img/coins/64x64/5426.png",
     "XMR" : "https://s2.coinmarketcap.com/static/img/coins/64x64/328.png",
-    "BCH" : "https://s2.coinmarketcap.com/static/img/coins/64x64/1831.png"
+    "XRP" : "https://s2.coinmarketcap.com/static/img/coins/64x64/52.png"
 };  
 
 // generate the code for the static website
 function generateCode() {
     let code = "";
+    // get the name of the organization from the text input of the form
+    const orgName = document.getElementById("org-name").value;
+    const orgSite = document.getElementById("org-website").value;
     const cryptoOptions = document.querySelectorAll(
         "#crypto-options input[type='checkbox']"
     );
@@ -75,6 +87,9 @@ function generateCode() {
     //add style code to the website in a multiline string
     code += `
     <style>
+        body {
+            background-color: #000;
+        }
         #crypto-donations {
             display: flex;
             flex-direction: column;
@@ -82,14 +97,15 @@ function generateCode() {
             justify-content: center;
         }
         .crypto-donation {
+            background-color: #f0f0f0;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             margin: 1rem;
             padding: 1rem;
-            border: 1px solid black;
-            border-radius: 5px;
+            border: 1px solid white;
+            border-radius: 20px;
         }
         .crypto-donation-header {
             display: flex;
@@ -117,7 +133,7 @@ function generateCode() {
             margin: 0.5rem;
         }
         .code-box {
-            background-color: #f2f2f2;
+            background-color: #e3e3e3;
             padding: 20px;
             border-radius: 10px;
         }
@@ -150,7 +166,7 @@ function generateCode() {
             height: 80px;
             background-color: #f0f0f0;
             border-radius: 30px;
-            box-shadow: 0 2px 5px rgba(0,0,0,.3);
+            box-shadow: 2px 2px 5px rgba(0,0,0,.3);
             margin: 0 auto;
             /* center text horizontally and vertically */
             display: flex;
@@ -161,6 +177,12 @@ function generateCode() {
         .footer a {
             /* text-decoration: none; */
             color: #000;
+        }
+        h1 {
+            color: #fff;
+            text-align: center;
+            font-size: 4rem;
+            margin-top: 50px;
         }
         h3 {
             font-size: 5rem;
@@ -175,9 +197,14 @@ function generateCode() {
         p {
             font-size: 2rem;
         }
-        </style>`;
+        .blank-space {
+            height: 100px;
+        }
+    </style>
+`;
     code += `
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+<h1> Donate To ${orgName}!</h1>
 `;
     code += "<div id='crypto-donations'>";
     cryptoOptions.forEach((option) => {
@@ -188,52 +215,60 @@ function generateCode() {
             );
             let walletAddress = cryptoField.input;
             code += `
-    <div class='crypto-donation'>
-        <div class='crypto-donation-header'>
-        <img src='${coinUrls[ticker]}' style="width: 10vw; height: auto;">
-            <h3>${ticker}</h3>
-        </div>
-        <div class='crypto-donation-body'>
-            <div class="crypto-donation-top">
-                <p class="thicc-text">Send ${ticker} to the following address:</p>
-                <div class='${ticker}-code code-box'>
-                    <p class="wallet-address">${walletAddress}</p>
+        <div class='crypto-donation'>
+            <div class='crypto-donation-header'>
+            <img src='${coinUrls[ticker]}' style="width: 10vw; height: auto;">
+                <h3>${ticker}</h3>
+            </div>
+            <div class='crypto-donation-body'>
+                <div class="crypto-donation-top">
+                    <p class="thicc-text">Send ${ticker} to the following address:</p>
+                    <div class='${ticker}-code code-box'>
+                        <p class="wallet-address">${walletAddress}</p>
+                    </div>
+                    <button class="copy-btn" onclick="${ticker}copyCode()">Copy</button>
                 </div>
-                <button class="copy-btn" onclick="${ticker}copyCode()">Copy</button>
-            </div>
-            <div class='crypto-donation-bottom'>
-                <p class="thicc-text">Or scan the following QR code:</p>    
-                <canvas id="${ticker}-qr"></canvas>
+                <div class='crypto-donation-bottom'>
+                    <p class="thicc-text">Or scan the following QR code:</p>    
+                    <canvas id="${ticker}-qr"></canvas>
+                </div>
             </div>
         </div>
-    </div>
 `;
             // add javascript for the qr code
             code += `
-    <script type="text/javascript">
-        new QRious({
-            element: document.getElementById("${ticker}-qr"), 
-            value: "${walletAddress}",
-            size: 400
-        });
-        function ${ticker}copyCode() {
-            var copyText = document.querySelector(".${ticker}-code");
-            var range = document.createRange();
-            range.selectNode(copyText);
-            window.getSelection().removeAllRanges();
-            window.getSelection().addRange(range);
-            document.execCommand("copy");
-        }
-    </script>
+        <script type="text/javascript">
+            new QRious({
+                element: document.getElementById("${ticker}-qr"), 
+                value: "${walletAddress}",
+                size: 400
+            });
+            function ${ticker}copyCode() {
+                var copyText = document.querySelector(".${ticker}-code");
+                var range = document.createRange();
+                range.selectNode(copyText);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                document.execCommand("copy");
+            }
+        </script>
 `;
         }
     });
     code += "</div>";
     // add the footer
     code += `
-<div class="footer">
-    <p>This site created by <a href="https://dev00ps.com">Someone</a></p>
+<div class="blank-space">
+    <p> </p>
 </div>
+<div class="footer">
+    <p id="copywright"></p>
+</div>
+<script>
+    const currentYear = new Date().getFullYear();
+    var copywrightele = document.getElementById("copywright");
+    copywrightele.innerHTML = "Copyright &#169 ${createdYear}-" + currentYear + " <a href=\\"${orgSite}\\"> ${orgName}</a>";
+</script>
 `;
     return code;
 }

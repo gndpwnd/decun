@@ -1,107 +1,122 @@
 
-    <style>
-        #crypto-donations {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .crypto-donation {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin: 1rem;
-            padding: 1rem;
-            border: 1px solid black;
-            border-radius: 5px;
-        }
-        .crypto-donation-header {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            margin-top: 30px;
-            margin-bottom: 30px;
-        }
-        .crypto-donation-header img {
-            width: 2rem;
-            height: 2rem;
-            margin-right: 1rem;
-        }
-        .crypto-donation-header h3 {
-            margin: 0;
-        }
-        .crypto-donation-body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .crypto-donation-body p {
-            margin: 0.5rem;
-        }
-        .code-box {
-            background-color: #f2f2f2;
-            padding: 20px;
-            border-radius: 10px;
-        }
-        .copy-btn {
-            background-color: #1DA1F2;
-            border: none;
-            color: white;
-            padding: 8px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 2.5rem;
-            margin: 10px 2px;
-            cursor: pointer;
-            border-radius: 30px;
-            font-weight: bold;
-        }
-        .crypto-donation-top {
-            margin-bottom: 30px;
-        }
-        .thicc-text {
-            font-weight: bold;
-            font-size: 3rem;
-        }
-        .footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 80px;
-            background-color: #f0f0f0;
-            border-radius: 30px;
-            box-shadow: 0 2px 5px rgba(0,0,0,.3);
-            margin: 0 auto;
-            /* center text horizontally and vertically */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-        .footer a {
-            /* text-decoration: none; */
-            color: #000;
-        }
-        h3 {
-            font-size: 5rem;
-        }
-        canvas {
-            padding-left: 0;
-            padding-right: 0;
-            margin-left: auto;
-            margin-right: auto;
-            display: block;
-        }
-        p {
-            font-size: 2rem;
-        }
-        </style>
+<style>
+    body {
+        background-color: #000;
+    }
+    #crypto-donations {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .crypto-donation {
+        background-color: #f0f0f0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 1rem;
+        padding: 1rem;
+        border: 1px solid white;
+        border-radius: 20px;
+    }
+    .crypto-donation-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .crypto-donation-header img {
+        width: 2rem;
+        height: 2rem;
+        margin-right: 1rem;
+    }
+    .crypto-donation-header h3 {
+        margin: 0;
+    }
+    .crypto-donation-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .crypto-donation-body p {
+        margin: 0.5rem;
+    }
+    .code-box {
+        background-color: #e3e3e3;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .copy-btn {
+        background-color: #1DA1F2;
+        border: none;
+        color: white;
+        padding: 8px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 2.5rem;
+        margin: 10px 2px;
+        cursor: pointer;
+        border-radius: 30px;
+        font-weight: bold;
+    }
+    .crypto-donation-top {
+        margin-bottom: 30px;
+    }
+    .thicc-text {
+        font-weight: bold;
+        font-size: 3rem;
+    }
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 80px;
+        background-color: #f0f0f0;
+        border-radius: 30px;
+        box-shadow: 2px 2px 5px rgba(0,0,0,.3);
+        margin: 0 auto;
+        /* center text horizontally and vertically */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    .footer a {
+        /* text-decoration: none; */
+        color: #000;
+    }
+    h1 {
+        color: #fff;
+        text-align: center;
+        font-size: 4rem;
+        margin-top: 50px;
+    }
+    h3 {
+        font-size: 5rem;
+    }
+    canvas {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+    p {
+        font-size: 2rem;
+    }
+    .blank-space {
+        height: 100px;
+    }
+</style>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+<h1> Donate To gndpwnd!</h1>
 <div id='crypto-donations'>
     <div class='crypto-donation'>
         <div class='crypto-donation-header'>
@@ -213,42 +228,6 @@
 
     <div class='crypto-donation'>
         <div class='crypto-donation-header'>
-        <img src='https://s2.coinmarketcap.com/static/img/coins/64x64/2.png' style="width: 10vw; height: auto;">
-            <h3>LTC</h3>
-        </div>
-        <div class='crypto-donation-body'>
-            <div class="crypto-donation-top">
-                <p class="thicc-text">Send LTC to the following address:</p>
-                <div class='LTC-code code-box'>
-                    <p class="wallet-address">myLTCaddress</p>
-                </div>
-                <button class="copy-btn" onclick="LTCcopyCode()">Copy</button>
-            </div>
-            <div class='crypto-donation-bottom'>
-                <p class="thicc-text">Or scan the following QR code:</p>    
-                <canvas id="LTC-qr"></canvas>
-            </div>
-        </div>
-    </div>
-
-    <script type="text/javascript">
-        new QRious({
-            element: document.getElementById("LTC-qr"), 
-            value: "myLTCaddress",
-            size: 400
-        });
-        function LTCcopyCode() {
-            var copyText = document.querySelector(".LTC-code");
-            var range = document.createRange();
-            range.selectNode(copyText);
-            window.getSelection().removeAllRanges();
-            window.getSelection().addRange(range);
-            document.execCommand("copy");
-        }
-    </script>
-
-    <div class='crypto-donation'>
-        <div class='crypto-donation-header'>
         <img src='https://s2.coinmarketcap.com/static/img/coins/64x64/328.png' style="width: 10vw; height: auto;">
             <h3>XMR</h3>
         </div>
@@ -282,43 +261,15 @@
             document.execCommand("copy");
         }
     </script>
-
-    <div class='crypto-donation'>
-        <div class='crypto-donation-header'>
-        <img src='https://s2.coinmarketcap.com/static/img/coins/64x64/1831.png' style="width: 10vw; height: auto;">
-            <h3>BCH</h3>
-        </div>
-        <div class='crypto-donation-body'>
-            <div class="crypto-donation-top">
-                <p class="thicc-text">Send BCH to the following address:</p>
-                <div class='BCH-code code-box'>
-                    <p class="wallet-address">myBCHaddress</p>
-                </div>
-                <button class="copy-btn" onclick="BCHcopyCode()">Copy</button>
-            </div>
-            <div class='crypto-donation-bottom'>
-                <p class="thicc-text">Or scan the following QR code:</p>    
-                <canvas id="BCH-qr"></canvas>
-            </div>
-        </div>
-    </div>
-
-    <script type="text/javascript">
-        new QRious({
-            element: document.getElementById("BCH-qr"), 
-            value: "myBCHaddress",
-            size: 400
-        });
-        function BCHcopyCode() {
-            var copyText = document.querySelector(".BCH-code");
-            var range = document.createRange();
-            range.selectNode(copyText);
-            window.getSelection().removeAllRanges();
-            window.getSelection().addRange(range);
-            document.execCommand("copy");
-        }
-    </script>
+</div>
+<div class="blank-space">
+<p> </p>
 </div>
 <div class="footer">
-    <p>This site created by <a href="https://dev00ps.com">Someone</a></p>
+<p id="copywright"></p>
 </div>
+<script>
+const currentYear = new Date().getFullYear();
+var copywrightele = document.getElementById("copywright");
+copywrightele.innerHTML = "Copyright &#169 2023-" + currentYear + " <a href=\"https://www.dev00ps.com\"> gndpwnd</a>";
+</script>
