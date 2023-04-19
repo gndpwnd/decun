@@ -127,7 +127,7 @@
             <div class="crypto-donation-top">
                 <p class="thicc-text">Send BTC to the following address:</p>
                 <div class='BTC-code code-box'>
-                    <p class="wallet-address">myBTCaddress</p>
+                    <p id='BTC-address' class="wallet-address"></p>
                 </div>
                 <button class="copy-btn" onclick="BTCcopyCode()">Copy</button>
             </div>
@@ -139,18 +139,29 @@
     </div>
 
     <script type="text/javascript">
+        var BTCwalletAddress = "bc1qsslzvr298rlq2urw9utlyhstluruu5ru5q36lf";
         new QRious({
             element: document.getElementById("BTC-qr"), 
-            value: "myBTCaddress",
+            value: BTCwalletAddress,
             size: 400
         });
         function BTCcopyCode() {
-            var copyText = document.querySelector(".BTC-code");
-            var range = document.createRange();
-            range.selectNode(copyText);
-            window.getSelection().removeAllRanges();
-            window.getSelection().addRange(range);
-            document.execCommand("copy");
+            var textToCopy = BTCwalletAddress;
+            navigator.clipboard.writeText(BTCwalletAddress);
+        }
+        var BTCwalletAddressElement = document.getElementById("BTC-address");
+        if (BTCwalletAddress.length > 10) {
+            if (BTCwalletAddress.length >= 15) {
+                var fp = BTCwalletAddress.substring(0, 10);
+                var lp = BTCwalletAddress.substring(BTCwalletAddress.length - 5);
+                var mp = ".....";
+                BTCwalletAddressElement.textContent = fp + mp + lp;
+            } else {
+                var shortenedText = BTCwalletAddress.substring(0, 10) + ".....";
+                BTCwalletAddressElement.textContent = shortenedText;
+            }
+        } else {
+            BTCwalletAddressElement.textContent = BTCwalletAddress;
         }
     </script>
 
@@ -163,7 +174,7 @@
             <div class="crypto-donation-top">
                 <p class="thicc-text">Send ETH to the following address:</p>
                 <div class='ETH-code code-box'>
-                    <p class="wallet-address">myETHaddress</p>
+                    <p id='ETH-address' class="wallet-address"></p>
                 </div>
                 <button class="copy-btn" onclick="ETHcopyCode()">Copy</button>
             </div>
@@ -175,18 +186,29 @@
     </div>
 
     <script type="text/javascript">
+        var ETHwalletAddress = "0xf792f7757D8FF06ddFE10437803a8e57a9D288a2";
         new QRious({
             element: document.getElementById("ETH-qr"), 
-            value: "myETHaddress",
+            value: ETHwalletAddress,
             size: 400
         });
         function ETHcopyCode() {
-            var copyText = document.querySelector(".ETH-code");
-            var range = document.createRange();
-            range.selectNode(copyText);
-            window.getSelection().removeAllRanges();
-            window.getSelection().addRange(range);
-            document.execCommand("copy");
+            var textToCopy = ETHwalletAddress;
+            navigator.clipboard.writeText(ETHwalletAddress);
+        }
+        var ETHwalletAddressElement = document.getElementById("ETH-address");
+        if (ETHwalletAddress.length > 10) {
+            if (ETHwalletAddress.length >= 15) {
+                var fp = ETHwalletAddress.substring(0, 10);
+                var lp = ETHwalletAddress.substring(ETHwalletAddress.length - 5);
+                var mp = ".....";
+                ETHwalletAddressElement.textContent = fp + mp + lp;
+            } else {
+                var shortenedText = ETHwalletAddress.substring(0, 10) + ".....";
+                ETHwalletAddressElement.textContent = shortenedText;
+            }
+        } else {
+            ETHwalletAddressElement.textContent = ETHwalletAddress;
         }
     </script>
 
@@ -199,7 +221,7 @@
             <div class="crypto-donation-top">
                 <p class="thicc-text">Send DOGE to the following address:</p>
                 <div class='DOGE-code code-box'>
-                    <p class="wallet-address">myDOGEaddress</p>
+                    <p id='DOGE-address' class="wallet-address"></p>
                 </div>
                 <button class="copy-btn" onclick="DOGEcopyCode()">Copy</button>
             </div>
@@ -211,18 +233,29 @@
     </div>
 
     <script type="text/javascript">
+        var DOGEwalletAddress = "DEKaXnWHZZoc8HWamn4XEEWUnRFKPwGj7X";
         new QRious({
             element: document.getElementById("DOGE-qr"), 
-            value: "myDOGEaddress",
+            value: DOGEwalletAddress,
             size: 400
         });
         function DOGEcopyCode() {
-            var copyText = document.querySelector(".DOGE-code");
-            var range = document.createRange();
-            range.selectNode(copyText);
-            window.getSelection().removeAllRanges();
-            window.getSelection().addRange(range);
-            document.execCommand("copy");
+            var textToCopy = DOGEwalletAddress;
+            navigator.clipboard.writeText(DOGEwalletAddress);
+        }
+        var DOGEwalletAddressElement = document.getElementById("DOGE-address");
+        if (DOGEwalletAddress.length > 10) {
+            if (DOGEwalletAddress.length >= 15) {
+                var fp = DOGEwalletAddress.substring(0, 10);
+                var lp = DOGEwalletAddress.substring(DOGEwalletAddress.length - 5);
+                var mp = ".....";
+                DOGEwalletAddressElement.textContent = fp + mp + lp;
+            } else {
+                var shortenedText = DOGEwalletAddress.substring(0, 10) + ".....";
+                DOGEwalletAddressElement.textContent = shortenedText;
+            }
+        } else {
+            DOGEwalletAddressElement.textContent = DOGEwalletAddress;
         }
     </script>
 
@@ -235,7 +268,7 @@
             <div class="crypto-donation-top">
                 <p class="thicc-text">Send XMR to the following address:</p>
                 <div class='XMR-code code-box'>
-                    <p class="wallet-address">myXMRaddress</p>
+                    <p id='XMR-address' class="wallet-address"></p>
                 </div>
                 <button class="copy-btn" onclick="XMRcopyCode()">Copy</button>
             </div>
@@ -247,18 +280,405 @@
     </div>
 
     <script type="text/javascript">
+        var XMRwalletAddress = "48QUaiYw8Hm5oRWJwLYqLf95LREdAwnQ4EfYPw8ZCfNQCKyoLcAo31iMhGb8FkQjMGCtiBmTHCXgHPqVk8Ua9HJsRVSJFh9";
         new QRious({
             element: document.getElementById("XMR-qr"), 
-            value: "myXMRaddress",
+            value: XMRwalletAddress,
             size: 400
         });
         function XMRcopyCode() {
-            var copyText = document.querySelector(".XMR-code");
-            var range = document.createRange();
-            range.selectNode(copyText);
-            window.getSelection().removeAllRanges();
-            window.getSelection().addRange(range);
-            document.execCommand("copy");
+            var textToCopy = XMRwalletAddress;
+            navigator.clipboard.writeText(XMRwalletAddress);
+        }
+        var XMRwalletAddressElement = document.getElementById("XMR-address");
+        if (XMRwalletAddress.length > 10) {
+            if (XMRwalletAddress.length >= 15) {
+                var fp = XMRwalletAddress.substring(0, 10);
+                var lp = XMRwalletAddress.substring(XMRwalletAddress.length - 5);
+                var mp = ".....";
+                XMRwalletAddressElement.textContent = fp + mp + lp;
+            } else {
+                var shortenedText = XMRwalletAddress.substring(0, 10) + ".....";
+                XMRwalletAddressElement.textContent = shortenedText;
+            }
+        } else {
+            XMRwalletAddressElement.textContent = XMRwalletAddress;
+        }
+    </script>
+
+    <div class='crypto-donation'>
+        <div class='crypto-donation-header'>
+        <img src='https://s2.coinmarketcap.com/static/img/coins/64x64/2.png' style="width: 10vw; height: auto;">
+            <h3>LTC</h3>
+        </div>
+        <div class='crypto-donation-body'>
+            <div class="crypto-donation-top">
+                <p class="thicc-text">Send LTC to the following address:</p>
+                <div class='LTC-code code-box'>
+                    <p id='LTC-address' class="wallet-address"></p>
+                </div>
+                <button class="copy-btn" onclick="LTCcopyCode()">Copy</button>
+            </div>
+            <div class='crypto-donation-bottom'>
+                <p class="thicc-text">Or scan the following QR code:</p>    
+                <canvas id="LTC-qr"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var LTCwalletAddress = "LP8HVJY7deU4emxxcwnQcLL6xirevBfMuz";
+        new QRious({
+            element: document.getElementById("LTC-qr"), 
+            value: LTCwalletAddress,
+            size: 400
+        });
+        function LTCcopyCode() {
+            var textToCopy = LTCwalletAddress;
+            navigator.clipboard.writeText(LTCwalletAddress);
+        }
+        var LTCwalletAddressElement = document.getElementById("LTC-address");
+        if (LTCwalletAddress.length > 10) {
+            if (LTCwalletAddress.length >= 15) {
+                var fp = LTCwalletAddress.substring(0, 10);
+                var lp = LTCwalletAddress.substring(LTCwalletAddress.length - 5);
+                var mp = ".....";
+                LTCwalletAddressElement.textContent = fp + mp + lp;
+            } else {
+                var shortenedText = LTCwalletAddress.substring(0, 10) + ".....";
+                LTCwalletAddressElement.textContent = shortenedText;
+            }
+        } else {
+            LTCwalletAddressElement.textContent = LTCwalletAddress;
+        }
+    </script>
+
+    <div class='crypto-donation'>
+        <div class='crypto-donation-header'>
+        <img src='https://s2.coinmarketcap.com/static/img/coins/64x64/1831.png' style="width: 10vw; height: auto;">
+            <h3>BCH</h3>
+        </div>
+        <div class='crypto-donation-body'>
+            <div class="crypto-donation-top">
+                <p class="thicc-text">Send BCH to the following address:</p>
+                <div class='BCH-code code-box'>
+                    <p id='BCH-address' class="wallet-address"></p>
+                </div>
+                <button class="copy-btn" onclick="BCHcopyCode()">Copy</button>
+            </div>
+            <div class='crypto-donation-bottom'>
+                <p class="thicc-text">Or scan the following QR code:</p>    
+                <canvas id="BCH-qr"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var BCHwalletAddress = "qr23ddanma42r4mfsda9jsv0t0kpd7psay38wq373t";
+        new QRious({
+            element: document.getElementById("BCH-qr"), 
+            value: BCHwalletAddress,
+            size: 400
+        });
+        function BCHcopyCode() {
+            var textToCopy = BCHwalletAddress;
+            navigator.clipboard.writeText(BCHwalletAddress);
+        }
+        var BCHwalletAddressElement = document.getElementById("BCH-address");
+        if (BCHwalletAddress.length > 10) {
+            if (BCHwalletAddress.length >= 15) {
+                var fp = BCHwalletAddress.substring(0, 10);
+                var lp = BCHwalletAddress.substring(BCHwalletAddress.length - 5);
+                var mp = ".....";
+                BCHwalletAddressElement.textContent = fp + mp + lp;
+            } else {
+                var shortenedText = BCHwalletAddress.substring(0, 10) + ".....";
+                BCHwalletAddressElement.textContent = shortenedText;
+            }
+        } else {
+            BCHwalletAddressElement.textContent = BCHwalletAddress;
+        }
+    </script>
+
+    <div class='crypto-donation'>
+        <div class='crypto-donation-header'>
+        <img src='https://s2.coinmarketcap.com/static/img/coins/64x64/2010.png' style="width: 10vw; height: auto;">
+            <h3>ADA</h3>
+        </div>
+        <div class='crypto-donation-body'>
+            <div class="crypto-donation-top">
+                <p class="thicc-text">Send ADA to the following address:</p>
+                <div class='ADA-code code-box'>
+                    <p id='ADA-address' class="wallet-address"></p>
+                </div>
+                <button class="copy-btn" onclick="ADAcopyCode()">Copy</button>
+            </div>
+            <div class='crypto-donation-bottom'>
+                <p class="thicc-text">Or scan the following QR code:</p>    
+                <canvas id="ADA-qr"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var ADAwalletAddress = "addr1qylfs4v4787gv2f56nplgy4z4caf8dv48t4ym790yyqa34e7np2etu0usc5nf4xr7sf29t36jw6e2wh2fhu27ggpmrts3f5sy0";
+        new QRious({
+            element: document.getElementById("ADA-qr"), 
+            value: ADAwalletAddress,
+            size: 400
+        });
+        function ADAcopyCode() {
+            var textToCopy = ADAwalletAddress;
+            navigator.clipboard.writeText(ADAwalletAddress);
+        }
+        var ADAwalletAddressElement = document.getElementById("ADA-address");
+        if (ADAwalletAddress.length > 10) {
+            if (ADAwalletAddress.length >= 15) {
+                var fp = ADAwalletAddress.substring(0, 10);
+                var lp = ADAwalletAddress.substring(ADAwalletAddress.length - 5);
+                var mp = ".....";
+                ADAwalletAddressElement.textContent = fp + mp + lp;
+            } else {
+                var shortenedText = ADAwalletAddress.substring(0, 10) + ".....";
+                ADAwalletAddressElement.textContent = shortenedText;
+            }
+        } else {
+            ADAwalletAddressElement.textContent = ADAwalletAddress;
+        }
+    </script>
+
+    <div class='crypto-donation'>
+        <div class='crypto-donation-header'>
+        <img src='https://s2.coinmarketcap.com/static/img/coins/64x64/1839.png' style="width: 10vw; height: auto;">
+            <h3>BNB</h3>
+        </div>
+        <div class='crypto-donation-body'>
+            <div class="crypto-donation-top">
+                <p class="thicc-text">Send BNB to the following address:</p>
+                <div class='BNB-code code-box'>
+                    <p id='BNB-address' class="wallet-address"></p>
+                </div>
+                <button class="copy-btn" onclick="BNBcopyCode()">Copy</button>
+            </div>
+            <div class='crypto-donation-bottom'>
+                <p class="thicc-text">Or scan the following QR code:</p>    
+                <canvas id="BNB-qr"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var BNBwalletAddress = "0xf792f7757D8FF06ddFE10437803a8e57a9D288a2";
+        new QRious({
+            element: document.getElementById("BNB-qr"), 
+            value: BNBwalletAddress,
+            size: 400
+        });
+        function BNBcopyCode() {
+            var textToCopy = BNBwalletAddress;
+            navigator.clipboard.writeText(BNBwalletAddress);
+        }
+        var BNBwalletAddressElement = document.getElementById("BNB-address");
+        if (BNBwalletAddress.length > 10) {
+            if (BNBwalletAddress.length >= 15) {
+                var fp = BNBwalletAddress.substring(0, 10);
+                var lp = BNBwalletAddress.substring(BNBwalletAddress.length - 5);
+                var mp = ".....";
+                BNBwalletAddressElement.textContent = fp + mp + lp;
+            } else {
+                var shortenedText = BNBwalletAddress.substring(0, 10) + ".....";
+                BNBwalletAddressElement.textContent = shortenedText;
+            }
+        } else {
+            BNBwalletAddressElement.textContent = BNBwalletAddress;
+        }
+    </script>
+
+    <div class='crypto-donation'>
+        <div class='crypto-donation-header'>
+        <img src='https://s2.coinmarketcap.com/static/img/coins/64x64/3890.png' style="width: 10vw; height: auto;">
+            <h3>MATIC</h3>
+        </div>
+        <div class='crypto-donation-body'>
+            <div class="crypto-donation-top">
+                <p class="thicc-text">Send MATIC to the following address:</p>
+                <div class='MATIC-code code-box'>
+                    <p id='MATIC-address' class="wallet-address"></p>
+                </div>
+                <button class="copy-btn" onclick="MATICcopyCode()">Copy</button>
+            </div>
+            <div class='crypto-donation-bottom'>
+                <p class="thicc-text">Or scan the following QR code:</p>    
+                <canvas id="MATIC-qr"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var MATICwalletAddress = "0xf792f7757D8FF06ddFE10437803a8e57a9D288a2";
+        new QRious({
+            element: document.getElementById("MATIC-qr"), 
+            value: MATICwalletAddress,
+            size: 400
+        });
+        function MATICcopyCode() {
+            var textToCopy = MATICwalletAddress;
+            navigator.clipboard.writeText(MATICwalletAddress);
+        }
+        var MATICwalletAddressElement = document.getElementById("MATIC-address");
+        if (MATICwalletAddress.length > 10) {
+            if (MATICwalletAddress.length >= 15) {
+                var fp = MATICwalletAddress.substring(0, 10);
+                var lp = MATICwalletAddress.substring(MATICwalletAddress.length - 5);
+                var mp = ".....";
+                MATICwalletAddressElement.textContent = fp + mp + lp;
+            } else {
+                var shortenedText = MATICwalletAddress.substring(0, 10) + ".....";
+                MATICwalletAddressElement.textContent = shortenedText;
+            }
+        } else {
+            MATICwalletAddressElement.textContent = MATICwalletAddress;
+        }
+    </script>
+
+    <div class='crypto-donation'>
+        <div class='crypto-donation-header'>
+        <img src='https://s2.coinmarketcap.com/static/img/coins/64x64/1376.png' style="width: 10vw; height: auto;">
+            <h3>NEO</h3>
+        </div>
+        <div class='crypto-donation-body'>
+            <div class="crypto-donation-top">
+                <p class="thicc-text">Send NEO to the following address:</p>
+                <div class='NEO-code code-box'>
+                    <p id='NEO-address' class="wallet-address"></p>
+                </div>
+                <button class="copy-btn" onclick="NEOcopyCode()">Copy</button>
+            </div>
+            <div class='crypto-donation-bottom'>
+                <p class="thicc-text">Or scan the following QR code:</p>    
+                <canvas id="NEO-qr"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var NEOwalletAddress = "AebR5v92JWUA22c2KFC3YqWM5x3rCCZHrX";
+        new QRious({
+            element: document.getElementById("NEO-qr"), 
+            value: NEOwalletAddress,
+            size: 400
+        });
+        function NEOcopyCode() {
+            var textToCopy = NEOwalletAddress;
+            navigator.clipboard.writeText(NEOwalletAddress);
+        }
+        var NEOwalletAddressElement = document.getElementById("NEO-address");
+        if (NEOwalletAddress.length > 10) {
+            if (NEOwalletAddress.length >= 15) {
+                var fp = NEOwalletAddress.substring(0, 10);
+                var lp = NEOwalletAddress.substring(NEOwalletAddress.length - 5);
+                var mp = ".....";
+                NEOwalletAddressElement.textContent = fp + mp + lp;
+            } else {
+                var shortenedText = NEOwalletAddress.substring(0, 10) + ".....";
+                NEOwalletAddressElement.textContent = shortenedText;
+            }
+        } else {
+            NEOwalletAddressElement.textContent = NEOwalletAddress;
+        }
+    </script>
+
+    <div class='crypto-donation'>
+        <div class='crypto-donation-header'>
+        <img src='https://s2.coinmarketcap.com/static/img/coins/64x64/5426.png' style="width: 10vw; height: auto;">
+            <h3>SOL</h3>
+        </div>
+        <div class='crypto-donation-body'>
+            <div class="crypto-donation-top">
+                <p class="thicc-text">Send SOL to the following address:</p>
+                <div class='SOL-code code-box'>
+                    <p id='SOL-address' class="wallet-address"></p>
+                </div>
+                <button class="copy-btn" onclick="SOLcopyCode()">Copy</button>
+            </div>
+            <div class='crypto-donation-bottom'>
+                <p class="thicc-text">Or scan the following QR code:</p>    
+                <canvas id="SOL-qr"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var SOLwalletAddress = "4dW1FJcXCgEq89ENY2RAzZmz3EaxGb1X2BqADVLWA15q";
+        new QRious({
+            element: document.getElementById("SOL-qr"), 
+            value: SOLwalletAddress,
+            size: 400
+        });
+        function SOLcopyCode() {
+            var textToCopy = SOLwalletAddress;
+            navigator.clipboard.writeText(SOLwalletAddress);
+        }
+        var SOLwalletAddressElement = document.getElementById("SOL-address");
+        if (SOLwalletAddress.length > 10) {
+            if (SOLwalletAddress.length >= 15) {
+                var fp = SOLwalletAddress.substring(0, 10);
+                var lp = SOLwalletAddress.substring(SOLwalletAddress.length - 5);
+                var mp = ".....";
+                SOLwalletAddressElement.textContent = fp + mp + lp;
+            } else {
+                var shortenedText = SOLwalletAddress.substring(0, 10) + ".....";
+                SOLwalletAddressElement.textContent = shortenedText;
+            }
+        } else {
+            SOLwalletAddressElement.textContent = SOLwalletAddress;
+        }
+    </script>
+
+    <div class='crypto-donation'>
+        <div class='crypto-donation-header'>
+        <img src='https://s2.coinmarketcap.com/static/img/coins/64x64/52.png' style="width: 10vw; height: auto;">
+            <h3>XRP</h3>
+        </div>
+        <div class='crypto-donation-body'>
+            <div class="crypto-donation-top">
+                <p class="thicc-text">Send XRP to the following address:</p>
+                <div class='XRP-code code-box'>
+                    <p id='XRP-address' class="wallet-address"></p>
+                </div>
+                <button class="copy-btn" onclick="XRPcopyCode()">Copy</button>
+            </div>
+            <div class='crypto-donation-bottom'>
+                <p class="thicc-text">Or scan the following QR code:</p>    
+                <canvas id="XRP-qr"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var XRPwalletAddress = "rG1pyDF1XHrEXxb5Wj4nmyRiscxabVbmSY";
+        new QRious({
+            element: document.getElementById("XRP-qr"), 
+            value: XRPwalletAddress,
+            size: 400
+        });
+        function XRPcopyCode() {
+            var textToCopy = XRPwalletAddress;
+            navigator.clipboard.writeText(XRPwalletAddress);
+        }
+        var XRPwalletAddressElement = document.getElementById("XRP-address");
+        if (XRPwalletAddress.length > 10) {
+            if (XRPwalletAddress.length >= 15) {
+                var fp = XRPwalletAddress.substring(0, 10);
+                var lp = XRPwalletAddress.substring(XRPwalletAddress.length - 5);
+                var mp = ".....";
+                XRPwalletAddressElement.textContent = fp + mp + lp;
+            } else {
+                var shortenedText = XRPwalletAddress.substring(0, 10) + ".....";
+                XRPwalletAddressElement.textContent = shortenedText;
+            }
+        } else {
+            XRPwalletAddressElement.textContent = XRPwalletAddress;
         }
     </script>
 </div>
@@ -271,5 +691,5 @@
 <script>
 const currentYear = new Date().getFullYear();
 var copywrightele = document.getElementById("copywright");
-copywrightele.innerHTML = "Copyright &#169 2023-" + currentYear + " <a href=\"https://www.dev00ps.com\"> gndpwnd</a>";
+copywrightele.innerHTML = "Copyright &#169 2023-" + currentYear + " <a href=\"https://dev00ps.com\"> gndpwnd</a>";
 </script>

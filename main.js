@@ -224,7 +224,7 @@ function generateCode() {
                 <div class="crypto-donation-top">
                     <p class="thicc-text">Send ${ticker} to the following address:</p>
                     <div class='${ticker}-code code-box'>
-                        <p class="wallet-address">${walletAddress}</p>
+                        <p id='${ticker}-address' class="wallet-address"></p>
                     </div>
                     <button class="copy-btn" onclick="${ticker}copyCode()">Copy</button>
                 </div>
@@ -238,18 +238,29 @@ function generateCode() {
             // add javascript for the qr code
             code += `
         <script type="text/javascript">
+            var ${ticker}walletAddress = "${walletAddress}";
             new QRious({
                 element: document.getElementById("${ticker}-qr"), 
-                value: "${walletAddress}",
+                value: ${ticker}walletAddress,
                 size: 400
             });
             function ${ticker}copyCode() {
-                var copyText = document.querySelector(".${ticker}-code");
-                var range = document.createRange();
-                range.selectNode(copyText);
-                window.getSelection().removeAllRanges();
-                window.getSelection().addRange(range);
-                document.execCommand("copy");
+                var textToCopy = ${ticker}walletAddress;
+                navigator.clipboard.writeText(${ticker}walletAddress);
+            }
+            var ${ticker}walletAddressElement = document.getElementById("${ticker}-address");
+            if (${ticker}walletAddress.length > 10) {
+                if (${ticker}walletAddress.length >= 15) {
+                    var fp = ${ticker}walletAddress.substring(0, 10);
+                    var lp = ${ticker}walletAddress.substring(${ticker}walletAddress.length - 5);
+                    var mp = ".....";
+                    ${ticker}walletAddressElement.textContent = fp + mp + lp;
+                } else {
+                    var shortenedText = ${ticker}walletAddress.substring(0, 10) + ".....";
+                    ${ticker}walletAddressElement.textContent = shortenedText;
+                }
+            } else {
+                ${ticker}walletAddressElement.textContent = ${ticker}walletAddress;
             }
         </script>
 `;
